@@ -32,3 +32,16 @@ framework:
 #    bootstrap/assets/javascripts/bootstrap/scrollspy.js: {}
 #    bootstrap/assets/javascripts/bootstrap/tab.js: {}
 #    bootstrap/assets/javascripts/bootstrap/transition.js: {}
+
+
+custom-library:
+  version: VERSION
+  css:
+    theme:
+      css/theme/style.css: {}
+      css/base/font.css: {}
+  js:
+    js/script.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
