@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - script: |
+      # Install dependencies
+      sudo apt-get update
+      sudo apt-get install -y php-cli unzip
+
+      # Install Composer
+      php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+      php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+      php -r "unlink('composer-setup.php');"
+
+      # Install Drupal dependencies
+      cd drupal9/Drupal-9-Front-End
+      composer install
+
+  - script: |
+      # Run Drupal tests or any other build commands
+      cd path/to/your/drupal9/repo
+      vendor/bin/phpunit -c core/phpunit.xml.dist  # Replace with your test command
