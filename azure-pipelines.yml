@@ -4,27 +4,18 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  branches:
+    include:
+      - master
+
+pr:
+  branches:
+    include:
+      - '*'
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'macOS-latest'
 
 steps:
-  - script: |
-      # Install dependencies
-      sudo apt-get update
-      sudo apt-get install -y php-cli unzip
-
-      # Install Composer
-      php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-      php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-      php -r "unlink('composer-setup.php');"
-
-      # Install Drupal dependencies
-      cd ranjitsahoo1032002/Drupal9
-      composer install
-
-  - script: |
-      # Run Drupal tests or any other build commands
-      cd ranjitsahoo1032002/Drupal9
-      vendor/bin/phpunit -c core/phpunit.xml.dist  # Replace with your test command
+- script: echo "Pipeline executed successfully!"
+  displayName: 'Print Message'
