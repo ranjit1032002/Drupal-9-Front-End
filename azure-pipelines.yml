@@ -21,10 +21,10 @@ steps:
       php -r "unlink('composer-setup.php');"
 
       # Install Drupal dependencies
-      cd drupal9/Drupal-9-Front-End
+      cd ranjitsahoo1032002/Drupal9
       composer install
 
   - script: |
       # Run Drupal tests or any other build commands
-      cd path/to/your/drupal9/repo
+      cd ranjitsahoo1032002/Drupal9
       vendor/bin/phpunit -c core/phpunit.xml.dist  # Replace with your test command
